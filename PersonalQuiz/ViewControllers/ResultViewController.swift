@@ -11,9 +11,7 @@ class ResultViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.setHidesBackButton(true, animated: true)
-        let mostPopularAnimal = getMostPopularAnimal(with: answersChosen)
-        resultLabel.text = "Вы - \(mostPopularAnimal.rawValue)!"
-        resultDefinitionLabel.text = mostPopularAnimal.definition
+        showResult()
     }
 }
 
@@ -27,5 +25,11 @@ extension ResultViewController {
         
         let mostPopularAnimal = animals.max { a, b in a.value < b.value }
         return mostPopularAnimal?.key ?? Animal.cat
+    }
+    
+    private func showResult() {
+        let mostPopularAnimal = getMostPopularAnimal(with: answersChosen)
+        resultLabel.text = "Вы - \(mostPopularAnimal.rawValue)!"
+        resultDefinitionLabel.text = mostPopularAnimal.definition
     }
 }
